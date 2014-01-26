@@ -1,0 +1,37 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CreditsPage.cs">
+    <Files>
+      <File FileName="Assets\Scripts\2D\Player2D.cs" Line="15" Column="32" />
+      <File FileName="Assets\Scripts\2D\Platform2D.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\2D\PlatformPool2D.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\2D\PlatformCreator2D.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\2D\FirstBlock2D.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CreditsPage.cs" Line="7" Column="39" />
+      <File FileName="Assets\Scripts\Redry.cs" Line="12" Column="2" />
+      <File FileName="Assets\Scripts\QuitGame.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="CreditsPage.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

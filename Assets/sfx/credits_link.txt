@@ -1,0 +1,7 @@
+game over = http://opengameart.org/content/lose-music-3
+
+jump = http://opengameart.org/content/platformer-jumping-sounds
+
+main menu = http://opengameart.org/content/iso1nhab1tans
+
+gameplay = http://opengameart.org/content/happy-arcade-tune

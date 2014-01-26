@@ -1,0 +1,115 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class Player2D : MonoBehaviour {
+	
+	public float jumpSpeed;
+	public float speed;
+	public bool onAir;
+	private Transform groundCheck;
+	private bool grounded = false;
+	private string name;
+	public GameObject star;
+	public GameColor2D color;
+	public AudioClip gameOverClip;
+	
+	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
+	// Use this for initialization
+	void Start () {
+		onAir = true;
+		color = null;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+		if(onAir){
+			if(Input.GetKeyDown(KeyCode.Alpha1))
+			{
+				this.color = GameColor2D.blue;
+			}
+			if(Input.GetKeyDown(KeyCode.Alpha2))
+			{
+				this.color = GameColor2D.purple;
+			}
+			if(Input.GetKeyDown(KeyCode.Alpha3))
+			{
+				this.color = GameColor2D.green;
+			}
+			if(Input.GetKeyDown(KeyCode.Alpha4))
+			{
+				this.color = GameColor2D.yellow;
+			}
+			if(Input.GetKeyDown(KeyCode.Alpha5))
+			{	
+				this.color = GameColor2D.red;
+			}
+			
+			GameObject.Find("gameDataContainer2D").GetComponent<PlatformPool2D>().disablePlatforms(this.color);
+		}
+		
+		if(color != null)
+			gameObject.renderer.material = this.color.textureMaterial;
+		if(!onAir && Input.GetButtonDown("Vertical"))
+		{			
+			//Debug.Log ("UpArrow pressed");
+			rigidbody2D.AddForce(new Vector2(0f, jumpSpeed));
+			this.audio.PlayOneShot (audio.clip);
+
+		}
+
+		if(gameObject.transform.position.y <= -10)
+		{
+
+			Application.LoadLevel("GameOverScreen");
+		}
+	}
+	
+	void FixedUpdate(){
+		// Cache the horizontal input.
+		float h = Input.GetAxis("Horizontal");
+		
+		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
+		if(h * rigidbody2D.velocity.x < maxSpeed)
+		{
+			// ... add a force to the player.
+			rigidbody2D.AddForce(Vector2.right * h * speed);
+
+		}
+		// If the player's horizontal velocity is greater than the maxSpeed...
+		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
+			// ... set the player's velocity to the maxSpeed in the x axis.
+			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
+
+	}
+	
+	void OnCollisionEnter2D(Collision2D other){
+		onAir = false;
+		if(other.gameObject.name != "memePlatform2D")
+			starCreator();
+		//Debug.Log("OnCollisionEnter");
+	}
+
+	void OnCollisionExit2D(Collision2D other){
+		onAir = true;
+		//Debug.Log("OnCollisionExit");
+	}
+
+	void starCreator(){
+		float rand_x, rand_y;
+		for(int i = 0; i < Mathf.CeilToInt(Random.value*5) ;i++)
+		{
+			rand_x = Random.value*25-12.5f;
+			rand_y = Random.value*20-10;
+			while(rand_x < -9 && rand_y > 6)
+			{
+				rand_x = Random.value*25-12.5f;
+				rand_y = Random.value*20-10;
+			}
+
+			GameObject g =  Instantiate(star, new Vector3(rand_x, rand_y, 5), Quaternion.identity) as GameObject;
+			g.renderer.material = this.color.textureMaterial;
+		}
+	}
+}
