@@ -10,7 +10,7 @@ public class SplashScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Time.time > 21 || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
+		if(Time.timeSinceLevelLoad > 30 || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
 			Application.LoadLevel("MainMenu");
 	}
 }
