@@ -5,6 +5,7 @@ public class GameData : MonoBehaviour {
 
 	public float gameSpeed;
 	public static int score;
+	public int scoreCoefficient;
 
 	void Start()
 	{
@@ -13,7 +14,7 @@ public class GameData : MonoBehaviour {
 	
 	void Update() 
 	{
-		score++;
+		score = Mathf.FloorToInt(Time.timeSinceLevelLoad * scoreCoefficient);
 		GameObject.Find("score").guiText.text = "Score: " + score;
 	}
 

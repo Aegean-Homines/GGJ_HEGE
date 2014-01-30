@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Pun : MonoBehaviour {
 	private string[] puns = {
-		"Stewie's telephone was ringing,\n he pinked up and said 'Yellow?'",
+		"Stevie's telephone was ringing,\n he pinked up and said 'Yellow?'",
 		"I have cyan all kinds of colors!",
 		"You are really colorful, orange you?",
 		"Stewie was the black sheep of the family,\n even though he was the most colorful.",
