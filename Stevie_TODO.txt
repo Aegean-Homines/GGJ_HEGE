@@ -1,2 +1,5 @@
 high score eklenecek
-score accumulation zamana bağlanacak
+score accumulation zamana bağlanacak - yapildi
+farkli cozunurlukler icin ayar cekilecek
+hiz cok ani degisiyor, daha smooth hale getirilecek
+platformlara friction eklenecek ki stevie dururken kayip dusmesin
