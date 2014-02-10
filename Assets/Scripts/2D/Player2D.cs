@@ -23,7 +23,7 @@ public class Player2D : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 		if(onAir){
 			if(Input.GetKeyDown(KeyCode.Alpha1))
 			{
@@ -63,6 +63,12 @@ public class Player2D : MonoBehaviour {
 		{
 
 			Application.LoadLevel("GameOverScreen");
+
+			if(GameData.score > GameData.highScore)
+			{
+				GameData.highScore = GameData.score;
+				PlayerPrefs.SetInt("High Score", GameData.highScore);
+			}
 		}
 	}
 	
