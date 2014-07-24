@@ -13,12 +13,15 @@ public class Player2D : MonoBehaviour {
 	public GameObject star;
 	public GameColor2D color;
 	public AudioClip gameOverClip;
+
+	private GameObject collidingPlatform;
 	
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
 	// Use this for initialization
 	void Start () {
 		onAir = true;
 		color = null;
+		collidingPlatform = null;
 	}
 	
 	// Update is called once per frame
@@ -54,6 +57,7 @@ public class Player2D : MonoBehaviour {
 		if(!onAir && Input.GetButtonDown("Vertical"))
 		{			
 			//Debug.Log ("UpArrow pressed");
+			Debug.Log("zipladik");
 			rigidbody2D.AddForce(new Vector2(0f, jumpSpeed));
 			this.audio.PlayOneShot (audio.clip);
 
@@ -91,6 +95,10 @@ public class Player2D : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D(Collision2D other){
+		if (this.collidingPlatform == null) {
+			this.collidingPlatform = other.gameObject;
+
+		}
 		onAir = false;
 		if(other.gameObject.name != "memePlatform2D")
 			starCreator();
@@ -98,7 +106,9 @@ public class Player2D : MonoBehaviour {
 	}
 
 	void OnCollisionExit2D(Collision2D other){
-		onAir = true;
+		if (this.collidingPlatform != null) {
+			onAir = true;
+		}
 		//Debug.Log("OnCollisionExit");
 	}
 

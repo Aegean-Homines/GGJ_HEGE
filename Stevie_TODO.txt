@@ -1,4 +1,4 @@
-high score eklenecek
+high score eklenecek - yapildi
 score accumulation zamana bağlanacak - yapildi
 farkli cozunurlukler icin ayar cekilecek
 hiz cok ani degisiyor, daha smooth hale getirilecek
