@@ -24,7 +24,9 @@ public class PlatformPool2D : MonoBehaviour {
 		if(pool.Count < maxSize)
 		{
 			Debug.Log ("Pool < maxSize");
-			pool.Add(Instantiate(type, new Vector3(15/*+playerObj.GetComponent<Player2D>().rigidbody2D.velocity.magnitude*/,CorpusEnchantemY,0),Quaternion.identity)as GameObject);
+			GameObject g = Instantiate(type, new Vector3(15, CorpusEnchantemY, 0),Quaternion.identity) as GameObject;
+			g.transform.parent = transform;
+			pool.Add(g);
 		}
 		else
 		{

@@ -10,12 +10,13 @@ public class Player2D : MonoBehaviour {
 	private Transform groundCheck;
 	private bool grounded = false;
 	private string name;
-	public GameObject star;
 	public GameColor2D color;
 	public AudioClip gameOverClip;
+	
+	public StarCreator stars;
 
 	private GameObject collidingPlatform;
-	
+
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
 	// Use this for initialization
 	void Start () {
@@ -100,8 +101,10 @@ public class Player2D : MonoBehaviour {
 
 		}
 		onAir = false;
-		if(other.gameObject.name != "memePlatform2D")
-			starCreator();
+		if (other.gameObject.name != "memePlatform2D") 
+		{
+			stars.createNewStar(this.color.textureMaterial);
+		}
 		//Debug.Log("OnCollisionEnter");
 	}
 
@@ -112,20 +115,5 @@ public class Player2D : MonoBehaviour {
 		//Debug.Log("OnCollisionExit");
 	}
 
-	void starCreator(){
-		float rand_x, rand_y;
-		for(int i = 0; i < Mathf.CeilToInt(Random.value*5) ;i++)
-		{
-			rand_x = Random.value*25-12.5f;
-			rand_y = Random.value*20-10;
-			while(rand_x < -9 && rand_y > 6)
-			{
-				rand_x = Random.value*25-12.5f;
-				rand_y = Random.value*20-10;
-			}
 
-			GameObject g =  Instantiate(star, new Vector3(rand_x, rand_y, 5), Quaternion.identity) as GameObject;
-			g.renderer.material = this.color.textureMaterial;
-		}
-	}
 }
