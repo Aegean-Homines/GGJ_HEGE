@@ -74,6 +74,46 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &168561521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 168561523}
+  - 114: {fileID: 168561522}
+  m_Layer: 0
+  m_Name: Stars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &168561522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 168561521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2854cc9e9c71401418fbef6a040586c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  star: {fileID: 100000, guid: 8f8548215ffa8d8478c668ad3b5bc13a, type: 2}
+--- !u!4 &168561523
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 168561521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1 &294406663
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,8 +909,8 @@ Camera:
   m_GameObject: {fileID: 1684970178}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: .0627451017, g: .0588235296, b: .160784319, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1057,8 +1097,8 @@ MonoBehaviour:
   jumpSpeed: 1500
   speed: 200
   onAir: 0
-  star: {fileID: 100000, guid: 8f8548215ffa8d8478c668ad3b5bc13a, type: 2}
-  gameOverClip: {fileID: 0}
+  gameOverClip: {fileID: 8300000, guid: 3fc10aef222d60146b0d9f65edc05283, type: 3}
+  stars: {fileID: 168561522}
   maxSpeed: 5
 --- !u!82 &1751340705
 AudioSource:
@@ -1254,7 +1294,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2098733124}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_LightmapIndex: 255
