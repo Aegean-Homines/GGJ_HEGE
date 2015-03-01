@@ -49,7 +49,7 @@ public class Platform2D : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		transform.position += new Vector3(-(gameData.gameSpeed) * Time.deltaTime, 0,0);
 	}
 }
