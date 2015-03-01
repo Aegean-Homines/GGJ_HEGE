@@ -58,7 +58,7 @@ public class Player2D : MonoBehaviour {
 		if(!onAir && Input.GetButtonDown("Vertical"))
 		{			
 			//Debug.Log ("UpArrow pressed");
-			Debug.Log("zipladik");
+			//Debug.Log("zipladik");
 			rigidbody2D.AddForce(new Vector2(0f, jumpSpeed));
 			this.audio.PlayOneShot (audio.clip);
 
@@ -98,7 +98,6 @@ public class Player2D : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 		if (this.collidingPlatform == null) {
 			this.collidingPlatform = other.gameObject;
-
 		}
 		onAir = false;
 		if (other.gameObject.name != "memePlatform2D") 

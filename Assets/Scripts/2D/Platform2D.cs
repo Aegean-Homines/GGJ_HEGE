@@ -7,11 +7,16 @@ public class Platform2D : MonoBehaviour {
 	public float speed;
 	public float size;
 	private System.Random r = new System.Random();
-	public static GameObject obj;
-	
-	// Use this for initialization
+
+    private GameData gameData;
+
+    void Awake()
+    {
+        GameObject dataContainer = GameObject.Find("gameDataContainer2D");
+        this.gameData = dataContainer.GetComponent<GameData>();
+    }
+
 	void Start () {
-		obj = GameObject.Find("gameDataContainer2D");
 		resetPlatform();
 	}
 	
@@ -20,7 +25,6 @@ public class Platform2D : MonoBehaviour {
 		size = 10 + Random.value * 10;
 		gameObject.transform.localScale = new Vector3(size , 2, 1);
 		(gameObject.collider2D as BoxCollider2D).size.Set(size, 2);
-		//gameObject.collider.transform.localScale = new Vector3(size , 1, 0);
 		
 		switch(Mathf.FloorToInt(Random.value * 5))
 		{
@@ -46,7 +50,6 @@ public class Platform2D : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		rigidbody2D.transform.position += new Vector3(-(obj.GetComponent<GameData>().gameSpeed) * Time.deltaTime, 0,0);
+		transform.position += new Vector3(-(gameData.gameSpeed) * Time.deltaTime, 0,0);
 	}
 }
