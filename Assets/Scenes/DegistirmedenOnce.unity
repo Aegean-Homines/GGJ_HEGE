@@ -392,6 +392,7 @@ GameObject:
   - 114: {fileID: 1219460780}
   - 114: {fileID: 1219460779}
   - 114: {fileID: 1219460782}
+  - 114: {fileID: 1219460783}
   m_Layer: 0
   m_Name: gameDataContainer2D
   m_TagString: Untagged
@@ -450,6 +451,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSpeed: 3
   scoreCoefficient: 100
+--- !u!114 &1219460783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1219460778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc72a23b151adb449ec549906381229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1279621966
 GameObject:
   m_ObjectHideFlags: 0
