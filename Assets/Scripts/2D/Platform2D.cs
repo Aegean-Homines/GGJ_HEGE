@@ -6,7 +6,6 @@ public class Platform2D : MonoBehaviour {
 	public GameColor2D color;
 	public float speed;
 	public float size;
-	private System.Random r = new System.Random();
 
     private GameData gameData;
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameData : MonoBehaviour {
 
@@ -8,20 +9,26 @@ public class GameData : MonoBehaviour {
 	public static int highScore;
 	public int scoreCoefficient;
 
-	void Start()
-	{
-		score = 0;
-		if(PlayerPrefs.HasKey("High Score"))
-			highScore = PlayerPrefs.GetInt("High Score");
-		else
-			PlayerPrefs.SetInt("High Score", 0);
-	}
-	
+    private Text scoreGUI;
+    private Text highScoreGUI;
+
+    void Awake()
+    {
+        scoreGUI = GameObject.Find("Score").GetComponent<Text>();
+        highScoreGUI = GameObject.Find("High Score").GetComponent<Text>();
+
+        score = 0;
+        if (PlayerPrefs.HasKey("High Score"))
+            highScore = PlayerPrefs.GetInt("High Score");
+        else
+            PlayerPrefs.SetInt("High Score", 0);
+    }
+
 	void Update() 
 	{
 		score = Mathf.FloorToInt(Time.timeSinceLevelLoad * scoreCoefficient);
-		GameObject.Find("score").guiText.text = "Score: " + score;
-		GameObject.Find ("highscore").guiText.text = "Highscore: " + highScore;
+        scoreGUI.text = "Score: " + score;
+        highScoreGUI.text = "High Score: " + highScore;
 	}
 
 	public static int getScore() 

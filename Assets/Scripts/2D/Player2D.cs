@@ -8,7 +8,6 @@ public class Player2D : MonoBehaviour {
 	public float speed;
 	public bool onAir;
 	private Transform groundCheck;
-	private bool grounded = false;
 	private string name;
 	public GameColor2D color;
 	public AudioClip gameOverClip;
