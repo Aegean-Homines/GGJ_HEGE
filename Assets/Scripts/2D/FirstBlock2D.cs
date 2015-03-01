@@ -1,14 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
-public class FirstBlock2D : MonoBehaviour {
-	public GameObject obj;
+public class FirstBlock2D : MonoBehaviour
+{
+    private GameData gameData;
 
 	void Start(){
-		obj = GameObject.Find("gameDataContainer2D");
+		GameObject dataContainer = GameObject.Find("gameDataContainer2D");
+        gameData = dataContainer.GetComponent<GameData>();
 	}
 	// Update is called once per frame
 	void Update () {
-		rigidbody2D.transform.position += new Vector3(-(obj.GetComponent<GameData>().gameSpeed) * Time.deltaTime, 0,0);
+		transform.position += new Vector3(-(gameData.gameSpeed) * Time.deltaTime, 0,0);
 	}
 }

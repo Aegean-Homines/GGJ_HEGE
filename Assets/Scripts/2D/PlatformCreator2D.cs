@@ -10,10 +10,21 @@ public class PlatformCreator2D : MonoBehaviour {
 	private float lastTime;
 	public float threshold = 2.0f;
 	public int counter;
+
+    private Player2D player;
+    private GameData gameData;
+    private PlatformPool2D pool;
 	// Use this for initialization
 	void Start () {
 		lastTime = 0;
 	}
+
+    void Awake()
+    {
+        this.player = GameObject.Find("Playah").GetComponent<Player2D>();
+        this.pool = gameObject.GetComponent<PlatformPool2D>();
+        this.gameData = gameObject.GetComponent<GameData>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,12 +35,12 @@ public class PlatformCreator2D : MonoBehaviour {
 			
 			if(oldRandom == randomNumber)
 			{
-				gameObject.GetComponent<PlatformPool2D>().getPlatform(randomNumber);
+                pool.getPlatform(randomNumber);
 			}
 			else
 			{
-				gameObject.GetComponent<PlatformPool2D>().getPlatform(randomNumber);
-				gameObject.GetComponent<PlatformPool2D>().getPlatform(oldRandom);
+				pool.getPlatform(randomNumber);
+                pool.getPlatform(oldRandom);
 			}
 			lastTime = Time.time;
 			
@@ -37,9 +48,9 @@ public class PlatformCreator2D : MonoBehaviour {
 			if (counter == 8)
 			{
 				counter = 0;
-				gameObject.GetComponent<GameData>().gameSpeed += 1;
+				gameData.gameSpeed += 1;
 				threshold -= (threshold / 10);
-				GameObject.Find("Playah").GetComponent<Player2D>().speed += 0.8f;
+                player.speed += 0.8f;
 			}
 		}
 		
