@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\GameData.cs" />
      <Compile Include="Assets\Scripts\InstructionPage.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\ParticleCreator.cs" />
      <Compile Include="Assets\Scripts\Platform.cs" />
      <Compile Include="Assets\Scripts\PlatformCreator.cs" />
      <Compile Include="Assets\Scripts\PlatformPool.cs" />

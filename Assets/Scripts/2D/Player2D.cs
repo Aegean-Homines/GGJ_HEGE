@@ -12,6 +12,7 @@ public class Player2D : MonoBehaviour {
 	public AudioClip gameOverClip;
 	
 	public StarCreator stars;
+    public ParticleCreator particles;
 
 	private GameObject collidingPlatform;
 
@@ -98,6 +99,7 @@ public class Player2D : MonoBehaviour {
 		if (other.gameObject.name != "memePlatform2D") 
 		{
 			stars.createNewStar(this.color.textureMaterial);
+            particles.createParticleSystem(this.color.textureMaterial, transform.position);
 		}
 	}
 
