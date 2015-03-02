@@ -28,7 +28,7 @@ public class GameData : MonoBehaviour {
 	{
 		score = Mathf.FloorToInt(Time.timeSinceLevelLoad * scoreCoefficient);
         scoreGUI.text = "Score: " + score;
-        highScoreGUI.text = "High Score: " + highScore;
+        highScoreGUI.text = "High Score: " + (highScore > score ? highScore : score);
 	}
 
 	public static int getScore() 
