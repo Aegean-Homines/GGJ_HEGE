@@ -1,13 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Redry : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-
+public class Redry : MonoBehaviour 
+{
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.R))
 		{
@@ -15,8 +10,7 @@ public class Redry : MonoBehaviour {
 		}
 	}
 
-	// Update is called once per frame
-	void OnMouseDown(){
+	public void OnClick(){
 		Application.LoadLevel("DegistirmedenOnce");
 	}
 }

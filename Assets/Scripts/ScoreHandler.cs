@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ScoreHandler : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-		GameObject.Find("score").guiText.text = "SCORE: " + GameData.getScore();
+    void Awake()
+    {
+        Text scoreGUI = GameObject.Find("Score").GetComponent<Text>();
+        scoreGUI.text = "SCORE: " + GameData.getScore(); ;
 	}
 }
