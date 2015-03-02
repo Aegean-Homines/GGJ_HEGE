@@ -8,8 +8,6 @@ public class Player : MonoBehaviour {
     public float speed;
     public bool onAir;
 	private Transform groundCheck;
-	private bool grounded = false;
-	private string name;
 	public GameColor color;
 	
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
@@ -43,15 +41,12 @@ public class Player : MonoBehaviour {
 			{	
 				this.color = GameColor.yellow;
 			}
-
-			GameObject.Find("gameDataContainer").GetComponent<PlatformPool>().disablePlatforms(this.color);
 		}
 
 		if(color != null)
 			gameObject.renderer.material = this.color.textureMaterial;
 		if(!onAir && Input.GetButtonDown("Vertical"))
-		{			
-			//Debug.Log ("UpArrow pressed");
+		{
 			rigidbody.AddForce(new Vector2(0f, jumpSpeed));
 		}
 
@@ -74,11 +69,9 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter(){
 		onAir = false;
-		//Debug.Log("OnCollisionEnter");
 	}
 
 	void OnCollisionExit(){
 		onAir = true;
-		//Debug.Log("OnCollisionExit");
 	}
 }

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class PlatformCreator2D : MonoBehaviour {
 	
 	public GameObject platform;
-	private List<GameObject> objectArray = new List<GameObject>();
 	private int randomNumber, oldRandom;
 	private float lastTime;
 	public float threshold = 2.0f;
@@ -25,8 +24,6 @@ public class PlatformCreator2D : MonoBehaviour {
         this.pool = gameObject.GetComponent<PlatformPool2D>();
         this.gameData = gameObject.GetComponent<GameData>();
     }
-	
-	// Update is called once per frame
 	void Update () {
 		if(Time.time - lastTime > threshold)
 		{

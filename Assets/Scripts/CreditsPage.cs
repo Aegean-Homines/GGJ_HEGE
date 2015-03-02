@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class CreditsPage : MonoBehaviour {
-
-	void OnMouseDown(){
-		Application.LoadLevel("CreditsScreen");
-	}
+    public void OnClick()
+    {
+        Application.LoadLevel("CreditsScreen");
+    }
 }

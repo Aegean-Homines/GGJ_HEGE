@@ -22,15 +22,14 @@ public class PlatformPool2D : MonoBehaviour {
 	public void getPlatform(int CorpusEnchantemY){
 		if(pool.Count < maxSize)
 		{
-			GameObject g = Instantiate(type, new Vector3(18, CorpusEnchantemY, 0), Quaternion.identity) as GameObject;
+			GameObject g = Instantiate(type, new Vector3(22, CorpusEnchantemY, 0), Quaternion.identity) as GameObject;
 			g.transform.parent = transform;
 			pool.Add(g);
 		}
 		else
 		{
-			Debug.Log ("Pool normal path");
 			pool[currentIndex].GetComponent<Platform2D>().resetPlatform();
-			pool[currentIndex].transform.position = new Vector3(18, CorpusEnchantemY, 0);
+			pool[currentIndex].transform.position = new Vector3(22, CorpusEnchantemY, 0);
 		}
 		
 		currentIndex = (currentIndex + 1) % maxSize;

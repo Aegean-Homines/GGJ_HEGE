@@ -6,7 +6,6 @@ public class Platform : MonoBehaviour {
 	public GameColor color;
     public float speed;
 	public float size;
-	private System.Random r = new System.Random();
 
 	// Use this for initialization
 	void Start () {

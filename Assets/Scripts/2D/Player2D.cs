@@ -8,7 +8,6 @@ public class Player2D : MonoBehaviour {
 	public float speed;
 	public bool onAir;
 	private Transform groundCheck;
-	private string name;
 	public GameColor2D color;
 	public AudioClip gameOverClip;
 	
@@ -55,12 +54,9 @@ public class Player2D : MonoBehaviour {
 		if(color != null)
 			gameObject.renderer.material = this.color.textureMaterial;
 		if(!onAir && Input.GetButtonDown("Vertical"))
-		{			
-			//Debug.Log ("UpArrow pressed");
-			//Debug.Log("zipladik");
+		{
 			rigidbody2D.AddForce(new Vector2(0f, jumpSpeed));
 			this.audio.PlayOneShot (audio.clip);
-
 		}
 
 		if(gameObject.transform.position.y <= -10)
@@ -103,14 +99,12 @@ public class Player2D : MonoBehaviour {
 		{
 			stars.createNewStar(this.color.textureMaterial);
 		}
-		//Debug.Log("OnCollisionEnter");
 	}
 
 	void OnCollisionExit2D(Collision2D other){
 		if (this.collidingPlatform != null) {
 			onAir = true;
 		}
-		//Debug.Log("OnCollisionExit");
 	}
 
 
