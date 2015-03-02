@@ -59,7 +59,7 @@ public class Player2D : MonoBehaviour {
 			this.audio.PlayOneShot (audio.clip);
 		}
 
-		if(gameObject.transform.position.y <= -10)
+		if(gameObject.transform.position.y <= -15)
 		{
 
 			Application.LoadLevel("GameOverScreen");
