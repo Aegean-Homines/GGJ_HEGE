@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472200}
+  - 114: {fileID: 11424420}
   - 198: {fileID: 19872200}
   - 199: {fileID: 19972200}
   m_Layer: 0
@@ -23,12 +24,24 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172200}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: -.707106829}
-  m_LocalPosition: {x: 0, y: -.180000007, z: 0}
+  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: 0, y: -.180000067, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11424420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb297844dcb25ab4aa62d00a6407b6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleEmitDuration: .100000001
 --- !u!198 &19872200
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -46,7 +59,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 5
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -279,19 +292,19 @@ ParticleSystem:
     enabled: 1
     type: 4
     radius: .00999999978
-    angle: 73.5999985
+    angle: 45
     length: 5
     boxX: 1
     boxY: 1
     boxZ: 1
     placementMode: 0
     m_Mesh: {fileID: 0}
-    randomDirection: 0
+    randomDirection: 1
   EmissionModule:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 10
+      scalar: 130.169998
       maxCurve:
         serializedVersion: 2
         m_Curve:

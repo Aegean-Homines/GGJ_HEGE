@@ -99,7 +99,7 @@ public class Player2D : MonoBehaviour {
 		if (other.gameObject.name != "memePlatform2D") 
 		{
 			stars.createNewStar(this.color.textureMaterial);
-            particles.createParticleSystem(this.color.textureMaterial, transform.position);
+            particles.createParticleSystem(this.color.textureMaterial, transform.position, other.gameObject.transform);
 		}
 	}
 
