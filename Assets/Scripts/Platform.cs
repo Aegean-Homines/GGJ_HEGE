@@ -16,7 +16,7 @@ public class Platform : MonoBehaviour {
 	{
 		size = 2 + Random.value * 4;
 		gameObject.transform.localScale = new Vector3(size , 1, 1);
-		(gameObject.collider as BoxCollider).size.Set(size , 1, 1);
+		(gameObject.GetComponent<Collider>() as BoxCollider).size.Set(size , 1, 1);
 		//gameObject.collider.transform.localScale = new Vector3(size , 1, 0);
 		
 		
@@ -39,13 +39,13 @@ public class Platform : MonoBehaviour {
 			break;
 		}
 		
-		gameObject.renderer.material = color.textureMaterial;
+		gameObject.GetComponent<Renderer>().material = color.textureMaterial;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        rigidbody.transform.position += new Vector3(-speed * Time.deltaTime, 0,0);
+        GetComponent<Rigidbody>().transform.position += new Vector3(-speed * Time.deltaTime, 0,0);
 	}
 
 	public float getSize()

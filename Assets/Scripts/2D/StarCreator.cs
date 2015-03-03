@@ -18,7 +18,7 @@ public class StarCreator : MonoBehaviour {
 			}
 			
 			GameObject g =  Instantiate(star, new Vector3(rand_x, rand_y, 5), Quaternion.identity) as GameObject;
-			g.renderer.material = colorMaterial;
+			g.GetComponent<Renderer>().material = colorMaterial;
 			g.transform.parent = transform;
 		}
 	}

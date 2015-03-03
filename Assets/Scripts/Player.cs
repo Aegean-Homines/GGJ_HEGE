@@ -44,10 +44,10 @@ public class Player : MonoBehaviour {
 		}
 
 		if(color != null)
-			gameObject.renderer.material = this.color.textureMaterial;
+			gameObject.GetComponent<Renderer>().material = this.color.textureMaterial;
 		if(!onAir && Input.GetButtonDown("Vertical"))
 		{
-			rigidbody.AddForce(new Vector2(0f, jumpSpeed));
+			GetComponent<Rigidbody>().AddForce(new Vector2(0f, jumpSpeed));
 		}
 
 	}
@@ -57,14 +57,14 @@ public class Player : MonoBehaviour {
 		float h = Input.GetAxis("Horizontal");
 		
 		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * rigidbody.velocity.x < maxSpeed)
+		if(h * GetComponent<Rigidbody>().velocity.x < maxSpeed)
 			// ... add a force to the player.
-			rigidbody.AddForce(Vector2.right * h * speed);
+			GetComponent<Rigidbody>().AddForce(Vector2.right * h * speed);
 		
 		// If the player's horizontal velocity is greater than the maxSpeed...
-		if(Mathf.Abs(rigidbody.velocity.x) > maxSpeed)
+		if(Mathf.Abs(GetComponent<Rigidbody>().velocity.x) > maxSpeed)
 			// ... set the player's velocity to the maxSpeed in the x axis.
-			rigidbody.velocity = new Vector2(Mathf.Sign(rigidbody.velocity.x) * maxSpeed, rigidbody.velocity.y);
+			GetComponent<Rigidbody>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody>().velocity.x) * maxSpeed, GetComponent<Rigidbody>().velocity.y);
 	}
 
 	void OnCollisionEnter(){

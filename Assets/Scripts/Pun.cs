@@ -15,18 +15,18 @@ public class Pun : MonoBehaviour {
 	private float lastTime = 0;
 	// Use this for initialization
 	void Start () {
-		guiText.text = "";
+		GetComponent<GUIText>().text = "";
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if ((GameData.score + 1) % 2000 == 0)
 		{
-			guiText.text = puns[Mathf.FloorToInt(Random.value*(6))];
+			GetComponent<GUIText>().text = puns[Mathf.FloorToInt(Random.value*(6))];
 			lastTime = Time.time;
 		}
 
 		if(Time.time - lastTime > 5)
-			guiText.text = "";
+			GetComponent<GUIText>().text = "";
 	}
 }

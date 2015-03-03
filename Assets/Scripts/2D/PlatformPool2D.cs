@@ -41,11 +41,11 @@ public class PlatformPool2D : MonoBehaviour {
 		{
 			if (g.GetComponent<Platform2D>().color != color) 
 			{
-				g.transform.collider2D.enabled = false;
+				g.transform.GetComponent<Collider2D>().enabled = false;
 			} 
 			else 
 			{
-				g.transform.collider2D.enabled = true;
+				g.transform.GetComponent<Collider2D>().enabled = true;
 			}
 		}
 	}

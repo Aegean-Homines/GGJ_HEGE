@@ -53,11 +53,11 @@ public class Player2D : MonoBehaviour {
 		}
 		
 		if(color != null)
-			gameObject.renderer.material = this.color.textureMaterial;
+			gameObject.GetComponent<Renderer>().material = this.color.textureMaterial;
 		if(!onAir && Input.GetButtonDown("Vertical"))
 		{
-			rigidbody2D.AddForce(new Vector2(0f, jumpSpeed));
-			this.audio.PlayOneShot (audio.clip);
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpSpeed));
+			this.GetComponent<AudioSource>().PlayOneShot (GetComponent<AudioSource>().clip);
 		}
 
 		if(gameObject.transform.position.y <= -15)
@@ -78,16 +78,16 @@ public class Player2D : MonoBehaviour {
 		float h = Input.GetAxis("Horizontal");
 		
 		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * rigidbody2D.velocity.x < maxSpeed)
+		if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
 		{
 			// ... add a force to the player.
-			rigidbody2D.AddForce(Vector2.right * h * speed);
+			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * speed);
 
 		}
 		// If the player's horizontal velocity is greater than the maxSpeed...
-		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
+		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
 			// ... set the player's velocity to the maxSpeed in the x axis.
-			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
 	}
 	

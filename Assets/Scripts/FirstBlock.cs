@@ -11,6 +11,6 @@ public class FirstBlock : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		rigidbody.transform.position += new Vector3(-speed * Time.deltaTime, 0,0);
+		GetComponent<Rigidbody>().transform.position += new Vector3(-speed * Time.deltaTime, 0,0);
 	}
 }

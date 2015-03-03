@@ -7,8 +7,6 @@ Project("{2352CA3C-4A92-DFD0-13D5-F5A939782821}") = "GGJ_HEGE", "Assembly-CSharp
 EndProject
 Project("{2352CA3C-4A92-DFD0-13D5-F5A939782821}") = "GGJ_HEGE", "Assembly-UnityScript-firstpass.unityproj", "{A1CD4EB6-5543-7538-1C44-5DA6ACD6434D}"
 EndProject
-Project("{2352CA3C-4A92-DFD0-13D5-F5A939782821}") = "GGJ_HEGE", "Assembly-UnityScript-Editor.unityproj", "{307D49DF-5EA0-287C-20B2-5FD80518BA3D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,15 +25,11 @@ Global
 		{A1CD4EB6-5543-7538-1C44-5DA6ACD6434D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1CD4EB6-5543-7538-1C44-5DA6ACD6434D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1CD4EB6-5543-7538-1C44-5DA6ACD6434D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{307D49DF-5EA0-287C-20B2-5FD80518BA3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{307D49DF-5EA0-287C-20B2-5FD80518BA3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{307D49DF-5EA0-287C-20B2-5FD80518BA3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{307D49DF-5EA0-287C-20B2-5FD80518BA3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																			GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

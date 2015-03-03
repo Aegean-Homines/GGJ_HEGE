@@ -23,7 +23,7 @@ public class Platform2D : MonoBehaviour {
 	{
 		size = 10 + Random.value * 10;
 		gameObject.transform.localScale = new Vector3(size , 2, 1);
-		(gameObject.collider2D as BoxCollider2D).size.Set(size, 2);
+		(gameObject.GetComponent<Collider2D>() as BoxCollider2D).size.Set(size, 2);
 		
 		switch(Mathf.FloorToInt(Random.value * 5))
 		{
@@ -44,7 +44,7 @@ public class Platform2D : MonoBehaviour {
 			break;
 		}
 		
-		gameObject.renderer.material = color.textureMaterial;
+		gameObject.GetComponent<Renderer>().material = color.textureMaterial;
 	}
 	
 	// Update is called once per frame
