@@ -14,14 +14,14 @@ public class Player2D : MonoBehaviour {
 	public StarCreator stars;
     public ParticleCreator particles;
 
-	private GameObject collidingPlatform;
+	private List<GameObject> collidingPlatforms;
 
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
 	// Use this for initialization
 	void Start () {
 		onAir = true;
 		color = null;
-		collidingPlatform = null;
+		collidingPlatforms = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
@@ -62,7 +62,6 @@ public class Player2D : MonoBehaviour {
 
 		if(gameObject.transform.position.y <= -15)
 		{
-
 			Application.LoadLevel("GameOverScreen");
 
 			if(GameData.score > GameData.highScore)
@@ -91,23 +90,26 @@ public class Player2D : MonoBehaviour {
 
 	}
 	
-	void OnCollisionEnter2D(Collision2D other){
-		if (this.collidingPlatform == null) {
-			this.collidingPlatform = other.gameObject;
-		}
-		onAir = false;
-		if (other.gameObject.name != "memePlatform2D") 
+	void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!this.collidingPlatforms.Contains(other.gameObject))
+        {
+            this.collidingPlatforms.Add(other.gameObject);
+        }
+        onAir = false;
+        if (other.gameObject.name != "memePlatform2D") 
 		{
 			stars.createNewStar(this.color.textureMaterial);
             particles.createParticleSystem(this.color.textureMaterial, transform.position, other.gameObject.transform);
 		}
 	}
 
-	void OnCollisionExit2D(Collision2D other){
-		if (this.collidingPlatform != null) {
-			onAir = true;
-		}
+	void OnCollisionExit2D(Collision2D other)
+    {
+        if (this.collidingPlatforms.Remove(other.gameObject) && 
+            this.collidingPlatforms.Count == 0)
+        {
+            onAir = true;
+        }
 	}
-
-
 }

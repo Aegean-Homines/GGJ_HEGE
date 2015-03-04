@@ -4,13 +4,13 @@ using System.Collections;
 public class StevieParticle : MonoBehaviour {
 
     private float creationTime;
-    private ParticleSystem particleSystem;
+    private ParticleSystem particle;
 
     public float particleEmitDuration;
 
     void Awake()
     {
-        particleSystem = gameObject.GetComponent<ParticleSystem>();
+        particle = gameObject.GetComponent<ParticleSystem>();
     }
 
 	void Start () {
@@ -20,7 +20,7 @@ public class StevieParticle : MonoBehaviour {
 	void Update () {
 	    if (Time.time - creationTime >= particleEmitDuration)
         {
-            particleSystem.enableEmission = false;
+            particle.enableEmission = false;
             Destroy(gameObject, 5);
         }
 	}

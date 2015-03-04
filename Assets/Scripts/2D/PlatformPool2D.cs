@@ -24,6 +24,7 @@ public class PlatformPool2D : MonoBehaviour {
 		{
 			GameObject g = Instantiate(type, new Vector3(22, CorpusEnchantemY, 0), Quaternion.identity) as GameObject;
 			g.transform.parent = transform;
+            g.name = "platform" + pool.Count;
 			pool.Add(g);
 		}
 		else
