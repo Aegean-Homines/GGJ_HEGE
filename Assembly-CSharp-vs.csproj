@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\2D\Scroll.cs" />
      <Compile Include="Assets\Scripts\2D\StarCreator.cs" />
      <Compile Include="Assets\Scripts\Classes\GameColor.cs" />
+     <Compile Include="Assets\Scripts\ControlManager.cs" />
      <Compile Include="Assets\Scripts\CreditsPage.cs" />
      <Compile Include="Assets\Scripts\FirstBlock.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />

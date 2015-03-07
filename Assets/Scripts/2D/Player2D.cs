@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,12 +17,21 @@ public class Player2D : MonoBehaviour {
 
 	private List<GameObject> collidingPlatforms;
 
-	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
-	// Use this for initialization
+    private Rigidbody2D rBody;
+    private AudioSource audioSource;
+    private ControlManager controlManager;
+
+	public float maxSpeed = 5f;
+    void Awake()
+    {
+        rBody = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+        controlManager = GameObject.Find("controlManager").GetComponent<ControlManager>();
+    }
 	void Start () {
 		onAir = true;
-		color = null;
-		collidingPlatforms = new List<GameObject>();
+        color = null;
+        collidingPlatforms = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
@@ -54,11 +64,11 @@ public class Player2D : MonoBehaviour {
 		
 		if(color != null)
 			gameObject.GetComponent<Renderer>().material = this.color.textureMaterial;
-		if(!onAir && Input.GetButtonDown("Vertical"))
-		{
-			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpSpeed));
-			this.GetComponent<AudioSource>().PlayOneShot (GetComponent<AudioSource>().clip);
-		}
+
+        if (Input.GetButtonDown("Vertical"))
+        {
+            checkJump();
+        }
 
 		if(gameObject.transform.position.y <= -15)
 		{
@@ -71,16 +81,25 @@ public class Player2D : MonoBehaviour {
 			}
 		}
 	}
-	
+
+    public void checkJump()
+    {
+        if (!onAir)
+        {
+            rBody.AddForce(new Vector2(0f, jumpSpeed));
+            audioSource.PlayOneShot(audioSource.clip);
+        }
+    }
+
 	void FixedUpdate(){
 		// Cache the horizontal input.
-		float h = Input.GetAxis("Horizontal");
-		
+        float h = controlManager.getHorizontalMovement();
+
 		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
+		if(h * rBody.velocity.x < maxSpeed)
 		{
 			// ... add a force to the player.
-			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * speed);
+            rBody.AddForce(Vector2.right * h * speed);
 
 		}
 		// If the player's horizontal velocity is greater than the maxSpeed...
