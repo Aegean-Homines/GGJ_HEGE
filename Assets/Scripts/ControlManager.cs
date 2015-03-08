@@ -50,8 +50,6 @@ public class ControlManager : MonoBehaviour {
         if (platform == RuntimePlatform.Android ||
             platform == RuntimePlatform.IPhonePlayer || true)
         {
-            //Debug.Log(EventSystem.current.currentSelectedGameObject.name);
-
             if (leftActive)
             {
                 return -1f;
@@ -65,8 +63,6 @@ public class ControlManager : MonoBehaviour {
         }
         else
         {
-            //Debug.Log(EventSystem.current);
-            //Debug.Log(Input.GetAxis("Horizontal"));
             return Input.GetAxis("Horizontal");
         }
     }

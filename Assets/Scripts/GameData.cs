@@ -9,13 +9,10 @@ public class GameData : MonoBehaviour {
 	public static int highScore;
 	public int scoreCoefficient;
 
-    private Text scoreGUI;
-    private Text highScoreGUI;
+    public static int difficulty;
 
     void Awake()
     {
-        scoreGUI = GameObject.Find("Score").GetComponent<Text>();
-        highScoreGUI = GameObject.Find("High Score").GetComponent<Text>();
 
         score = 0;
         if (PlayerPrefs.HasKey("High Score"))
@@ -27,13 +24,6 @@ public class GameData : MonoBehaviour {
 	void Update() 
 	{
 		score = Mathf.FloorToInt(Time.timeSinceLevelLoad * scoreCoefficient);
-        scoreGUI.text = "Score: " + score;
-        highScoreGUI.text = "High Score: " + (highScore > score ? highScore : score);
+        highScore = highScore > score ? highScore : score;
 	}
-
-	public static int getScore() 
-	{
-		return score;
-	}
-
 }

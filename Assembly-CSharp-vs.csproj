@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\ControlManager.cs" />
      <Compile Include="Assets\Scripts\CreditsPage.cs" />
      <Compile Include="Assets\Scripts\FirstBlock.cs" />
+     <Compile Include="Assets\Scripts\GUIManager.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
      <Compile Include="Assets\Scripts\InstructionPage.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
@@ -70,7 +71,6 @@
      <Compile Include="Assets\Scripts\Pun.cs" />
      <Compile Include="Assets\Scripts\QuitGame.cs" />
      <Compile Include="Assets\Scripts\Redry.cs" />
-     <Compile Include="Assets\Scripts\ScoreHandler.cs" />
      <Compile Include="Assets\Scripts\SplashScript.cs" />
      <Compile Include="Assets\Scripts\StartGame.cs" />
      <Compile Include="Assets\Scripts\StevieParticle.cs" />

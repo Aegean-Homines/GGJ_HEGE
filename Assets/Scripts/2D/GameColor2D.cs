@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameColor2D{
 	
@@ -37,4 +38,9 @@ public class GameColor2D{
 			break;
 		}
 	}
+
+    public static List<GameColor2D> getAvailableColors(int difficulty)
+    {
+        return null;
+    }
 }
