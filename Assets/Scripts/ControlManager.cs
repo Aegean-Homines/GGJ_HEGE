@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ControlManager : MonoBehaviour {
 
@@ -26,23 +27,28 @@ public class ControlManager : MonoBehaviour {
 
     public void leftButtonDown()
     {
-        Debug.Log("left down");
+        //Debug.Log("left down");
         leftActive = true;
     }
     public void leftButtonUp()
     {
-        Debug.Log("left up");
+        //Debug.Log("left up");
         leftActive = false;
     }
     public void rightButtonDown()
     {
-        Debug.Log("right down");
+        //Debug.Log("right down");
         rightActive = true;
     }
     public void rightButtonUp()
     {
-        Debug.Log("right up");
+        //Debug.Log("right up");
         rightActive = false;
+    }
+
+    public void colorButtonDown(BaseEventData data)
+    {
+
     }
 
     public float getHorizontalMovement()

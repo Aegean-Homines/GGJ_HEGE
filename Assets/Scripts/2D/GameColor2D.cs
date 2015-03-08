@@ -9,9 +9,10 @@ public class GameColor2D{
 	public static GameColor2D blue = new GameColor2D(GameObjectColor2D.BLUE);
 	public static GameColor2D yellow = new GameColor2D(GameObjectColor2D.YELLOW);
 	public static GameColor2D purple = new GameColor2D(GameObjectColor2D.PURPLE);
-	
-	public GameObjectColor2D color { set; get; }
-	public Material textureMaterial { set; get; }
+
+    public GameObjectColor2D color { set; get; }
+    public Material textureMaterial { set; get; }
+    public Material unlitTextureMaterial { set; get; }
 	
 	public enum GameObjectColor2D {
 		RED, GREEN, BLUE, YELLOW, PURPLE
@@ -41,6 +42,16 @@ public class GameColor2D{
 
     public static List<GameColor2D> getAvailableColors(int difficulty)
     {
-        return null;
+        switch (difficulty)
+        {
+            case 0:
+                return new List<GameColor2D>() { blue, purple, green};
+            case 1:
+                return new List<GameColor2D>() { blue, purple, green, yellow};
+            case 2: 
+            default:
+                return new List<GameColor2D>() { blue, purple, green, yellow, red };
+        }
+        
     }
 }

@@ -215,3 +215,8 @@ pip-log.txt
 .mr.developer.cfg
 Temp/
 Library/
+*.csproj
+*.pidb
+*.unityproj
+*.sln
+*.userprefs

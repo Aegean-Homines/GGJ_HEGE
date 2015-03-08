@@ -13,7 +13,7 @@ public class GameData : MonoBehaviour {
 
     void Awake()
     {
-
+        difficulty = 2;
         score = 0;
         if (PlayerPrefs.HasKey("High Score"))
             highScore = PlayerPrefs.GetInt("High Score");
