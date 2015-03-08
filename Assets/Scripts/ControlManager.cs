@@ -7,6 +7,9 @@ public class ControlManager : MonoBehaviour {
     public GameObject leftButton;
     public GameObject rightButton;
 
+    private bool leftActive = false;
+    private bool rightActive = false;
+
     private Player2D player;
     private RuntimePlatform platform;
 
@@ -21,20 +24,41 @@ public class ControlManager : MonoBehaviour {
         player.checkJump();
     }
 
+    public void leftButtonDown()
+    {
+        Debug.Log("left down");
+        leftActive = true;
+    }
+    public void leftButtonUp()
+    {
+        Debug.Log("left up");
+        leftActive = false;
+    }
+    public void rightButtonDown()
+    {
+        Debug.Log("right down");
+        rightActive = true;
+    }
+    public void rightButtonUp()
+    {
+        Debug.Log("right up");
+        rightActive = false;
+    }
+
     public float getHorizontalMovement()
     {
         if (platform == RuntimePlatform.Android ||
             platform == RuntimePlatform.IPhonePlayer || true)
         {
-            Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+            //Debug.Log(EventSystem.current.currentSelectedGameObject.name);
 
-            if (EventSystem.current.currentSelectedGameObject == leftButton)
+            if (leftActive)
             {
-                return -1;
+                return -1f;
             }
-            else if (EventSystem.current.currentSelectedGameObject == rightButton)
+            else if (rightActive)
             {
-                return 1;
+                return 1f;
             }
             else
                 return 0f;
