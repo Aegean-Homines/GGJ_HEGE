@@ -46,27 +46,33 @@ public class GUIManager : MonoBehaviour {
             buttonTexture.color = gameColor2D.textureMaterial.color;
             newButton.SetParent(canvas.transform);
 
-            Vector3 buttonPosition = calculateButtonPosition(180f - i * (90f / (colors.Count - 1))) + new Vector3();
-            //newButton.sizeDelta = new Vector2(0.25f, 0.25f);
-            Vector3 bottomRight = new Vector3(canvas.gameObject.GetComponent<RectTransform>().rect.width, 0, 0);
-            buttonPosition += bottomRight;
-            newButton.position = buttonPosition;
+            
+            Vector2 buttonPosition = calculateButtonPosition(180f - i * (90f / (colors.Count - 1)));
+            buttonPosition.x = - buttonPosition.x;
+            buttonPosition.y = buttonPosition.y*Camera.main.aspect;
+            buttonPosition = (buttonPosition)*.15f + new Vector2(1f, 0f);
+            buttonPosition.x = 2 - buttonPosition.x;
+            buttonPosition += new Vector2(-0.05f, 0.05f*Camera.main.aspect);
+            Debug.Log(buttonPosition);
+            newButton.anchorMax = newButton.anchorMin = buttonPosition;
+            newButton.anchoredPosition = new Vector2(25, -25);
+            
         }
     }
 
-    private Vector3 calculateButtonPosition(float calibrationAmount)
+    private Vector2 calculateButtonPosition(float calibrationAmount)
     {
         Vector3 leftVector = new Vector3(1f, 0f, 0f);
-        float _x = leftVector.x;
-        float _y = leftVector.y;
+        float x = leftVector.x;
+        float y = leftVector.y;
 
-        float _angle = calibrationAmount * Mathf.Deg2Rad;
-        float _cos = Mathf.Cos(_angle);
-        float _sin = Mathf.Sin(_angle);
+        float angle = calibrationAmount * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(angle);
+        float sin = Mathf.Sin(angle);
 
-        float _x2 = _x * _cos - _y * _sin;
-        float _y2 = _x * _sin + _y * _cos;
+        float x2 = x * cos - y * sin;
+        float y2 = x * sin + y * cos;
 
-        return new Vector2(_x2, _y2) * 150;
+        return new Vector2(x2, y2);
     }
 }
