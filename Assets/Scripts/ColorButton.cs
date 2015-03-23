@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Assets.Scripts;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -6,19 +8,18 @@ namespace Assets.Scripts
 {
     public class ColorButton : MonoBehaviour
     {
-        private Image _buttonTexture;
+        private Player2D _player;
+
+        public int ColorIndex;
 
         void Awake()
         {
-            _buttonTexture = GetComponent<Image>();;
+            _player = GameObject.Find("Playah").GetComponent<Player2D>();
         }
 
-        void Update ()
+        public void ColorButtonEnter()
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                Debug.Log(_buttonTexture.color);
-            }
+            _player.CheckColorChange(ColorIndex);
         }
     }
 }

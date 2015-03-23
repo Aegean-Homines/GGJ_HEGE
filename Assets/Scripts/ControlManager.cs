@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
+using Assets.Scripts;
 using UnityEngine.UI;
 
 public class ControlManager : MonoBehaviour {
@@ -22,17 +23,17 @@ public class ControlManager : MonoBehaviour {
 
     public void checkJumpButton()
     {
-        player.checkJump();
+        player.CheckJump();
     }
 
     public void leftButtonDown()
     {
-        //Debug.Log("left down");
+        Debug.Log("left down");
         leftActive = true;
     }
     public void leftButtonUp()
     {
-        //Debug.Log("left up");
+        Debug.Log("left up");
         leftActive = false;
     }
     public void rightButtonDown()
@@ -46,11 +47,6 @@ public class ControlManager : MonoBehaviour {
         rightActive = false;
     }
 
-    public void colorButtonDown(BaseEventData data)
-    {
-
-    }
-
     public float getHorizontalMovement()
     {
         if (platform == RuntimePlatform.Android ||
@@ -58,10 +54,12 @@ public class ControlManager : MonoBehaviour {
         {
             if (leftActive)
             {
+//                Debug.Log(-1f);
                 return -1f;
             }
             else if (rightActive)
             {
+//                Debug.Log(1f);
                 return 1f;
             }
             else

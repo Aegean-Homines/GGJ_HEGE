@@ -6,68 +6,48 @@ using System.Collections.Generic;
 public class Player2D : MonoBehaviour {
 	
 	public float jumpSpeed;
-	public float speed;
-	public bool onAir;
-	private Transform groundCheck;
-	public GameColor2D color;
-	public AudioClip gameOverClip;
+	public float Speed;
+	public bool OnAir;
+	public GameColor2D Color;
 	
 	public StarCreator stars;
     public ParticleCreator particles;
 
-	private List<GameObject> collidingPlatforms;
+	private List<GameObject> _collidingPlatforms;
 
-    private Rigidbody2D rBody;
-    private AudioSource audioSource;
-    private ControlManager controlManager;
+    private Rigidbody2D _rBody;
+    private AudioSource _audioSource;
+    private ControlManager _controlManager;
+
+    private List<GameColor2D> _colors;
+
+    private Transform _groundCheck;
 
 	public float maxSpeed = 5f;
     void Awake()
     {
-        rBody = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
-        controlManager = GameObject.Find("controlManager").GetComponent<ControlManager>();
+        _rBody = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
+        _colors = GameColor2D.getAvailableColors(GameData.difficulty);
+        _controlManager = GameObject.Find("controlManager").GetComponent<ControlManager>();
     }
 	void Start () {
-		onAir = true;
-        color = null;
-        collidingPlatforms = new List<GameObject>();
+		OnAir = true;
+        Color = null;
+        _collidingPlatforms = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if(onAir){
-			if(Input.GetKeyDown(KeyCode.Alpha1))
-			{
-				this.color = GameColor2D.blue;
-			}
-			if(Input.GetKeyDown(KeyCode.Alpha2))
-			{
-				this.color = GameColor2D.purple;
-			}
-			if(Input.GetKeyDown(KeyCode.Alpha3))
-			{
-				this.color = GameColor2D.green;
-			}
-			if(Input.GetKeyDown(KeyCode.Alpha4))
-			{
-				this.color = GameColor2D.yellow;
-			}
-			if(Input.GetKeyDown(KeyCode.Alpha5))
-			{	
-				this.color = GameColor2D.red;
-			}
-			
-			GameObject.Find("gameDataContainer2D").GetComponent<PlatformPool2D>().disablePlatforms(this.color);
-		}
+        CheckColorChange();
 		
-		if(color != null)
-			gameObject.GetComponent<Renderer>().material = this.color.textureMaterial;
+		if(Color != null)
+			gameObject.GetComponent<Renderer>().material = Color.textureMaterial;
 
         if (Input.GetButtonDown("Vertical"))
         {
-            checkJump();
+            CheckJump();
         }
 
 		if(gameObject.transform.position.y <= -15)
@@ -82,24 +62,61 @@ public class Player2D : MonoBehaviour {
 		}
 	}
 
-    public void checkJump()
+    public void CheckJump()
     {
-        if (!onAir)
+        if (!OnAir)
         {
-            rBody.AddForce(new Vector2(0f, jumpSpeed));
-            audioSource.PlayOneShot(audioSource.clip);
+            _rBody.AddForce(new Vector2(0f, jumpSpeed));
+            _audioSource.PlayOneShot(_audioSource.clip);
+        }
+    }
+
+    public void CheckColorChange(int colorIndex = -1)
+    {
+        if (OnAir)
+        {
+            if (colorIndex != -1)
+            {
+                Color = _colors[colorIndex];
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    Color = GameColor2D.blue;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    Color = GameColor2D.purple;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    Color = GameColor2D.green;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha4))
+                {
+                    Color = GameColor2D.yellow;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha5))
+                {
+                    Color = GameColor2D.red;
+                }
+            }
+
+            GameObject.Find("gameDataContainer2D").GetComponent<PlatformPool2D>().disablePlatforms(Color);
         }
     }
 
 	void FixedUpdate(){
 		// Cache the horizontal input.
-        float h = controlManager.getHorizontalMovement();
+        float h = _controlManager.getHorizontalMovement();
 
 		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * rBody.velocity.x < maxSpeed)
-		{
+		if(h * _rBody.velocity.x < maxSpeed)
+        {
+            Debug.Log(_rBody);
 			// ... add a force to the player.
-            rBody.AddForce(Vector2.right * h * speed);
+            _rBody.AddForce(Vector2.right * h * Speed);
 
 		}
 		// If the player's horizontal velocity is greater than the maxSpeed...
@@ -111,24 +128,24 @@ public class Player2D : MonoBehaviour {
 	
 	void OnCollisionEnter2D(Collision2D other)
     {
-        if (!this.collidingPlatforms.Contains(other.gameObject))
+        if (!_collidingPlatforms.Contains(other.gameObject))
         {
-            this.collidingPlatforms.Add(other.gameObject);
+            _collidingPlatforms.Add(other.gameObject);
         }
-        onAir = false;
+        OnAir = false;
         if (other.gameObject.name != "memePlatform2D") 
 		{
-			stars.createNewStar(this.color.textureMaterial);
-            particles.createParticleSystem(this.color.textureMaterial, transform.position, other.gameObject.transform);
+			stars.createNewStar(Color.textureMaterial);
+            particles.createParticleSystem(Color.textureMaterial, transform.position, other.gameObject.transform);
 		}
 	}
 
 	void OnCollisionExit2D(Collision2D other)
     {
-        if (this.collidingPlatforms.Remove(other.gameObject) && 
-            this.collidingPlatforms.Count == 0)
+        if (_collidingPlatforms.Remove(other.gameObject) && 
+            _collidingPlatforms.Count == 0)
         {
-            onAir = true;
+            OnAir = true;
         }
 	}
 }

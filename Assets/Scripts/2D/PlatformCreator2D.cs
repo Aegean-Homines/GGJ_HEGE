@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 
 public class PlatformCreator2D : MonoBehaviour {
 	
@@ -47,7 +48,7 @@ public class PlatformCreator2D : MonoBehaviour {
 				counter = 0;
 				gameData.gameSpeed += 1;
 				threshold -= (threshold / 10);
-                player.speed += 0.8f;
+                player.Speed += 0.8f;
 			}
 		}
 		
