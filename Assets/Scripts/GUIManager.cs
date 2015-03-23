@@ -46,17 +46,20 @@ public class GUIManager : MonoBehaviour {
             buttonTexture.color = gameColor2D.textureMaterial.color;
             newButton.SetParent(canvas.transform);
 
-            
             Vector2 buttonPosition = calculateButtonPosition(180f - i * (90f / (colors.Count - 1)));
             buttonPosition.x = - buttonPosition.x;
             buttonPosition.y = buttonPosition.y*Camera.main.aspect;
             buttonPosition = (buttonPosition)*.15f + new Vector2(1f, 0f);
             buttonPosition.x = 2 - buttonPosition.x;
-            buttonPosition += new Vector2(-0.05f, 0.05f*Camera.main.aspect);
-            Debug.Log(buttonPosition);
-            newButton.anchorMax = newButton.anchorMin = buttonPosition;
-            newButton.anchoredPosition = new Vector2(25, -25);
-            
+            buttonPosition += new Vector2(-0.05f, 0.05f * Camera.main.aspect);
+
+            float yRatio = newButton.rect.height / Screen.height;
+            float xRatio = newButton.rect.width / Screen.width;
+            newButton.anchorMax = buttonPosition + new Vector2(xRatio, yRatio)/2;
+            newButton.anchorMin = buttonPosition - new Vector2(xRatio, yRatio)/2;
+            newButton.offsetMax = new Vector2();
+            newButton.offsetMin = new Vector2();
+            newButton.anchoredPosition = new Vector2();
         }
     }
 
